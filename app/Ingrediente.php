@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ingrediente extends Model
 {
+
     protected $table = 'ingredienti';
+
+    protected $fillable = ['name'];
 
     public function pizze()
     {

@@ -69,18 +69,36 @@
 
 <body>
     <div>
-        <a href="{{ route('pizze.create') }}">Crea una nuova pizza!</a>
-        <ul>
-            @foreach ($pizze as $pizza)
+        <h1>I nostri ingredienti</h1>
+
+        <ul class="">
+            @foreach ($ingredienti as $ingrediente)
                 <li>
-                    {{ $pizza->nome_pizza }}
-                    <a href="{{ route('pizze.show', $pizza->id) }}">Visualizza dettaglio</a>
+                    {{ $ingrediente->name }}
+                    <a href="{{ route('ingrediente.show', $ingrediente->id) }}">Visualizza dettaglio ingrediente</a>
+
+                    <form action="{{ route('ingrediente.destroy', $ingrediente->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Cancella Ingrediente</button>
+                    </form>
+                    
                 </li>
             @endforeach
         </ul>
 
-        <a href="{{ route('ingrediente.index') }}">Ingredienti che abbiamo</a>
         
+
+        <a href="{{ route('ingrediente.create') }}">Inserisci nuovo ingrediente </a>
+
+        <br>
+
+        <a href="{{ route('pizze.index') }}">Menu pizze</a>
+
+        
+
+
+
     </div>
 </body>
 
